@@ -100,5 +100,12 @@ definition available in that market.
 
 - ORCID inserted: 0000-0002-3877-8024 (checksum valid). Confirm against the
   ORCID record itself before submission.
-- Verify every DOI in the bibliography against Crossref.
+- References: all 26 verified against Crossref / arXiv / zbMATH by
+  `paper/verify_refs.py` (run it again after any bibliography edit; it exits
+  non-zero on any mismatch). Seven errors were found and fixed this way:
+  four wrong DOIs pointing at unrelated papers (Barndorff-Nielsen et al.,
+  Lamperti, Luciano & Semeraro, Sun et al.), one wrong year
+  (Meerschaert & Sikorskii 2011, not 2012), one incomplete title
+  (Ascione et al., "space-time coupled"), and one wrong initial
+  (A. Mutti, not G.).
 - Confirm the IJTAF APC waiver policy.
