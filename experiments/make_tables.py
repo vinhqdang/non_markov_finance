@@ -245,6 +245,67 @@ def do_exp06():
     (PAPER / "tab_oulin.tex").write_text("\n".join(lines))
 
 
+def do_exp12():
+    d = load("exp12_joint_staleness")
+    if not d:
+        return
+    rows = pd.DataFrame(d["binance"]["rows"] + d["hose"]["rows"])
+    mac("jsStratumCrypto", f"{d['config']['stratum_s_crypto'] / 60:.0f}")
+    mac("jsStratumHose", f"{d['config']['stratum_s_hose'] / 60:.0f}")
+    mac("jsNboot", si(d["config"]["n_boot"]))
+    for mkt, tag in (("binance", "Cry"), ("hose", "Hos")):
+        sub = rows[rows.market == mkt].sort_values("bin_s")
+        r0 = sub.iloc[0]
+        mac(f"js{tag}Bin", f"{r0.bin_s:g}")
+        mac(f"js{tag}Pairs", si(r0.n_pairs))
+        mac(f"js{tag}Act", f"{r0.mean_activity:.3f}")
+        mac(f"js{tag}Crude", f"{r0.or_crude_median:.2f}")
+        mac(f"js{tag}MH", f"{r0.or_mh_median:.2f}")
+        mac(f"js{tag}MHlo", f"{r0.or_mh_q25:.2f}")
+        mac(f"js{tag}MHhi", f"{r0.or_mh_q75:.2f}")
+        mac(f"js{tag}Above", f"{100 * r0.frac_above_one:.0f}")
+        mac(f"js{tag}Sig", f"{100 * r0.frac_sig_above_one:.0f}")
+
+    lines = [r"\begin{tabular}{@{}llrrrrrr@{}}", r"\toprule",
+             r"Market & bin & pairs & activity & \multicolumn{2}{c}{median odds ratio} "
+             r"& $>1$ & CI$>1$ \\",
+             r" & & & & crude & M--H & (\%) & (\%) \\", r"\colrule"]
+    for t in rows.itertuples():
+        lines.append(
+            f"{'Binance' if t.market=='binance' else 'HOSE'} & {t.bin_s:g}\\,s & "
+            f"{si(t.n_pairs)} & {t.mean_activity:.3f} & {t.or_crude_median:.2f} & "
+            f"{t.or_mh_median:.2f} & {100*t.frac_above_one:.0f} & "
+            f"{100*t.frac_sig_above_one:.0f} \\\\")
+    lines += [r"\botrule", r"\end{tabular}"]
+    (PAPER / "tab_jointstale.tex").write_text("\n".join(lines))
+
+
+def do_exp13():
+    d = load("exp13_loading_benchmark")
+    if not d:
+        return
+    rows = pd.DataFrame(d["implied_or"])
+    tg = d["config"]["targets"]
+    col = f"or_at_{tg[0]:.3f}"
+    null = float(rows.loc[rows.a == 0, col].iloc[0])
+    mac("benchNull", f"{null:.2f}")
+    allnull = [float(rows.loc[rows.a == 0, f"or_at_{t:.3f}"].iloc[0]) for t in set(tg)]
+    mac("benchNullLo", f"{min(allnull):.2f}")
+    mac("benchNullHi", f"{max(allnull):.2f}")
+    mac("benchAtOne", f"{float(rows.loc[rows.a == 1, col].iloc[0]):.2f}")
+    mac("benchAtFour", f"{float(rows.loc[rows.a == 4, col].iloc[0]):.2f}")
+    mac("benchPaths", si(d["config"]["n_paths"]))
+
+    lines = [r"\begin{tabular}{@{}crrr@{}}", r"\toprule",
+             r"loading $a$ & \multicolumn{3}{c}{model M--H odds ratio at activity} \\",
+             r" & " + " & ".join(f"{t:.3f}" for t in tg) + r" \\", r"\colrule"]
+    for _, t in rows.iterrows():
+        vals = " & ".join(f"{t[f'or_at_{x:.3f}']:.2f}" for x in tg)
+        lines.append(f"{t['a']:g} & {vals} \\\\")
+    lines += [r"\botrule", r"\end{tabular}"]
+    (PAPER / "tab_bench.tex").write_text("\n".join(lines))
+
+
 # ---------------------------------------------------------------------------
 # Empirics
 # ---------------------------------------------------------------------------
@@ -414,6 +475,7 @@ def do_hose():
 
 def main():
     for f in (do_exp01, do_exp02, do_exp03, do_exp04, do_exp05, do_exp06,
+              do_exp12, do_exp13,
               do_crypto, do_hose):
         try:
             f()

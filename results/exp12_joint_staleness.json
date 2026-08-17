@@ -1,0 +1,172 @@
+{
+ "config": {
+  "bins_crypto": [
+   1.0,
+   5.0,
+   30.0
+  ],
+  "bins_hose": [
+   5.0,
+   15.0,
+   60.0
+  ],
+  "stratum_s_crypto": 1800.0,
+  "stratum_s_hose": 600.0,
+  "n_boot": 400,
+  "p_lo": 0.02,
+  "p_hi": 0.98,
+  "seed": 606
+ },
+ "binance": {
+  "rows": [
+   {
+    "market": "binance",
+    "bin_s": 1.0,
+    "n_assets": 14,
+    "n_pairs": 91,
+    "mean_activity": 0.3616178902116402,
+    "or_crude_median": 1.0839320528292753,
+    "or_mh_median": 1.034286352958243,
+    "or_mh_q25": 1.0090507514327616,
+    "or_mh_q75": 1.0881579080211679,
+    "frac_above_one": 0.8021978021978022,
+    "frac_sig_above_one": 0.31868131868131866
+   },
+   {
+    "market": "binance",
+    "bin_s": 5.0,
+    "n_assets": 19,
+    "n_pairs": 171,
+    "mean_activity": 0.45060307017543855,
+    "or_crude_median": 1.0550904320447787,
+    "or_mh_median": 1.0357431145264924,
+    "or_mh_q25": 0.9390669108742199,
+    "or_mh_q75": 1.115173955999118,
+    "frac_above_one": 0.5964912280701754,
+    "frac_sig_above_one": 0.13450292397660818
+   },
+   {
+    "market": "binance",
+    "bin_s": 30.0,
+    "n_assets": 11,
+    "n_pairs": 55,
+    "mean_activity": 0.4361742424242424,
+    "or_crude_median": 1.012966804979253,
+    "or_mh_median": 1.0141654416677803,
+    "or_mh_q25": 0.8983889628280266,
+    "or_mh_q75": 1.146646763320879,
+    "frac_above_one": 0.5454545454545454,
+    "frac_sig_above_one": 0.10909090909090909
+   }
+  ],
+  "symbols": [
+   "ALLOUSDT",
+   "AMPUSDT",
+   "AUSDT",
+   "BICOUSDT",
+   "BTCUSDT",
+   "ETHUSDT",
+   "HEMIUSDT",
+   "LINKUSDT",
+   "LQTYUSDT",
+   "PLUMEUSDT",
+   "PYPLBUSDT",
+   "RSRUSDT",
+   "SMHBUSDT",
+   "SOLUSDT",
+   "SPCXBUSDT",
+   "SYRUPUSDT",
+   "TRUMPUSDT",
+   "XPLUSDT",
+   "XRPUSDT",
+   "XVSUSDT"
+  ],
+  "stratum_s": 1800.0
+ },
+ "hose": {
+  "rows": [
+   {
+    "market": "hose",
+    "bin_s": 5.0,
+    "n_assets": 30,
+    "n_pairs": 435,
+    "mean_activity": 0.36808817470127725,
+    "or_crude_median": 1.1631531090438554,
+    "or_mh_median": 1.1334824916164894,
+    "or_mh_q25": 1.0045314338422693,
+    "or_mh_q75": 1.2783075708971805,
+    "frac_above_one": 0.7586206896551724,
+    "frac_sig_above_one": 0.271264367816092
+   },
+   {
+    "market": "hose",
+    "bin_s": 15.0,
+    "n_assets": 30,
+    "n_pairs": 435,
+    "mean_activity": 0.6567901234567901,
+    "or_crude_median": 1.1466794075489728,
+    "or_mh_median": 1.1179104477611936,
+    "or_mh_q25": 0.8754426112047634,
+    "or_mh_q75": 1.4124877799220954,
+    "frac_above_one": 0.6275862068965518,
+    "frac_sig_above_one": 0.1471264367816092
+   },
+   {
+    "market": "hose",
+    "bin_s": 60.0,
+    "n_assets": 12,
+    "n_pairs": 65,
+    "mean_activity": 0.825925925925926,
+    "or_crude_median": 1.0340909090909092,
+    "or_mh_median": 0.8333333333333334,
+    "or_mh_q25": 0.29629629629629634,
+    "or_mh_q75": 1.2857142857142856,
+    "frac_above_one": 0.4,
+    "frac_sig_above_one": 0.015384615384615385
+   }
+  ],
+  "symbols": [
+   "BID",
+   "CTG",
+   "DCM",
+   "DIG",
+   "DXG",
+   "FPT",
+   "GAS",
+   "GEX",
+   "HHV",
+   "HPG",
+   "HSG",
+   "KDH",
+   "MBB",
+   "MSN",
+   "MWG",
+   "NLG",
+   "POW",
+   "PVD",
+   "REE",
+   "SBT",
+   "SHB",
+   "SSI",
+   "STB",
+   "TCB",
+   "TCH",
+   "VCB",
+   "VIX",
+   "VND",
+   "VNM",
+   "VPB"
+  ],
+  "stratum_s": 600.0,
+  "session_s": 8090.0
+ },
+ "_meta": {
+  "experiment": "exp12_joint_staleness",
+  "finished_utc": "2026-08-17T06:49:10Z",
+  "runtime_s": 3.1,
+  "python": "3.13.11",
+  "numpy": "1.26.3",
+  "scipy": "1.16.3",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O"
+ }
+}

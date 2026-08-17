@@ -205,6 +205,17 @@ the \emph{diurnal cycle}, not of the market: the median Hill index rises from
 within one second. Removing the diurnal cycle raises it further. Once the tail
 threshold is fitted properly, \emph{no} series in either market is both a
 plausible power law and infinite-mean.
+
+\item \textbf{The one prediction that survives, tested}
+(Section~\ref{sec:jointstale}). Because marginal durations are blind to the
+common shock and the correlation term structure is flat, the only observable
+signature left is co-trading dependence. It is there, and it survives
+stratifying out the diurnal cycle: the Mantel--Haenszel odds ratio is
+\jsCryMH{} on Binance and \jsHosMH{} on HOSE, above one for \jsCryAbove{}\%
+and \jsHosAbove{}\% of asset pairs. But it is small -- smaller than the
+\benchNullLo{}--\benchNullHi{} the same statistic takes inside the model with
+\emph{zero} common-shock loading, because an $\alpha$-stable clock is bursty at
+every scale. The framework is over-strong in dependence as well as in tails.
 \end{arabiclist}
 
 \subsection{What the negative result implies}
@@ -761,6 +772,27 @@ The economic reading is that \emph{staleness by itself generates no correlation
 term structure at all}. Whatever term structure a calibrated model displays
 comes from the factor dynamics, not from the staleness mechanism.
 
+\begin{remark}[why this model has no Epps effect, and what would give it one]
+\label{rem:epps}
+Measured correlations between equities rise with the return horizon
+\citep{epp79}, a stylized fact usually attributed to nonsynchronous trading
+\citep{lo90}. Proposition~\ref{prop:rhoflat} says the specification
+\eqref{eq:twofactor} cannot reproduce it, and the reason is structural rather
+than parametric: in \eqref{eq:twofactor} both assets observe the common factor
+through the \emph{same} clock $H_0$, so their views of it are never out of step
+and no amount of staleness desynchronizes them. The asynchronicity that
+generates the Epps effect requires the common factor to be sampled at
+\emph{asset-specific} times, i.e. $a_i Y_0(H_i(t))$ rather than
+$a_i Y_0(H_0(t))$. Under that variant the covariance becomes the expected
+overlap of the intervals $[H_i(t),H_i(t+\Delta)]$ and $[H_h(t),H_h(t+\Delta)]$,
+which grows with $\Delta$ and so does produce a rising term structure --
+and whose growth rate is governed by how strongly the two clocks are coupled.
+The distinction matters for identification: it is the second variant, not the
+one analyzed here, in which the common-shock loading leaves a signature in
+second moments. We have not developed that case, and flag it as the natural
+companion to Question~\ref{q:tempered}.
+\end{remark}
+
 \begin{table}[t]
 \tbl{Proposition~\ref{prop:rhoflat} tested end to end on simulated prices with
 Brownian factors, $\alpha=1/2$.}
@@ -942,7 +974,11 @@ definitions.}
 
 A Poisson process whose rate varies over the day produces durations that are a
 \emph{mixture} of exponentials, and mixtures of exponentials have
-heavier-than-exponential tails. Any index estimated on a full trading day
+heavier-than-exponential tails. That a simple mechanism of this kind can
+manufacture an apparent power law is well established for returns
+\citep{leb01,far04}; the point here is that inter-trade durations are exposed to
+it just as directly, and over a trading day the modulating rate is not a subtle
+effect. Any index estimated on a full trading day
 therefore confounds tail behavior with the activity cycle. The cycle is large:
 the smoothed intraday profile of mean duration varies by a median factor of
 \cryptoDiurnalMed{} across pairs, and by up to \cryptoDiurnalHi{}.
@@ -1046,6 +1082,81 @@ intraday activity profile.}
 \label{tab:hose}
 \end{table}
 
+\subsection{Testing the prediction that does survive}\label{sec:jointstale}
+
+Everything so far has tested the tail assumption. It is worth asking separately
+whether the framework's \emph{dependence} prediction holds, because
+Section~\ref{sec:discussion} argues that this is the part robust to the tail
+index, and because Propositions~\ref{prop:beta} and \ref{prop:rhoflat} have
+already ruled out the two easier places to look: marginal durations are blind to
+the common shock, and the correlation term structure is flat.
+
+What remains is the atom itself. Bin calendar time at width $b$ and let
+$A_i(k)$ indicate that asset $i$ traded in bin $k$. Independent clocks make
+$A_i$ and $A_h$ independent; a shared clock component makes them positively
+associated. The 2$\times$2 table of co-trading counts and its odds ratio are
+therefore the natural identifying moment, and unlike the atom itself they are
+directly observable.
+
+Two things would otherwise fake a positive result. Both assets are quiet at the
+same times of day, so we stratify by time-of-day bucket (\jsStratumCrypto{}
+minutes for Binance, \jsStratumHose{} for HOSE) and pool with the
+Mantel--Haenszel estimator; the unstratified ratio is reported alongside so the
+size of that confound is visible. And bins are strongly autocorrelated, so
+confidence intervals come from a block bootstrap over whole strata,
+\jsNboot{} replications.
+
+\begin{table}[t]
+\tbl{Co-trading dependence between assets. ``Crude'' pools all bins;
+``M--H'' stratifies by time of day. The last two columns give the share of
+pairs with an odds ratio above one, and the share whose bootstrap interval
+excludes one.}
+{\input{tab_jointstale}}
+\label{tab:jointstale}
+\end{table}
+
+Table~\ref{tab:jointstale} reports the result, and it is a qualified
+confirmation. The sign is right and it survives the control: at the finest
+resolution the median Mantel--Haenszel odds ratio is \jsCryMH{} on Binance
+(\jsCryPairs{} pairs, \jsCryAbove{}\% above one, \jsCrySig{}\% individually
+significant) and \jsHosMH{} on HOSE (\jsHosPairs{} pairs, \jsHosAbove{}\% above
+one, \jsHosSig{}\% significant). Stratification moves the estimate only from
+\jsCryCrude{} to \jsCryMH{} and from \jsHosCrude{} to \jsHosMH{}, so the diurnal
+cycle accounts for little of it. Trade arrival is genuinely dependent across
+assets beyond the common activity cycle, as a shared clock component requires.
+
+The magnitude, however, points the same way as the rest of this section. To
+read it we need the model's own value of the same statistic, computed by
+generating the trade instants as the range of the clock and binning them
+identically (Table~\ref{tab:bench}, \benchPaths{} paths). The instructive entry
+is the first row. With \emph{no} common shock at all, $a=0$, the model still
+produces an odds ratio of \benchNullLo{}--\benchNullHi{}, not one: an
+$\alpha$-stable clock is bursty at every time scale, so activity clustering
+survives any finite stratification. That is the correct null for this model, and
+the observed values of \jsCryMH{} and \jsHosMH{} lie \emph{below} it.
+
+\begin{table}[b]
+\tbl{The same co-trading odds ratio computed inside the model, by Mantel--Haenszel
+over (path, sub-window) strata, read at the observed activity levels.
+The $a=0$ row is the independent-clock null.}
+{\input{tab_bench}}
+\begin{tabnote}
+The empirical section rejects the $\alpha<1$ marginal, so this is a magnitude
+benchmark for the dependence structure, not a fitted model.
+\end{tabnote}
+\label{tab:bench}
+\end{table}
+
+So the framework is not refuted here, but it is over-strong in a second,
+independent way. Real trade arrivals are positively dependent across assets, as
+the common-shock construction predicts; they are simply far less clustered than
+inverse-stable subordination makes them even before any common shock is added.
+Within this model class the implied loading is therefore indistinguishable from
+zero, not because the dependence is absent but because the baseline is already
+too high. Recovering a usable estimate of $a_j$ needs the finite-mean clock of
+Section~\ref{sec:discussion}, whose burstiness is controlled by the tempering
+rate; we state that as part of Question~\ref{q:tempered}.
+
 \subsection{Summary}
 
 \begin{arabiclist}
@@ -1060,6 +1171,10 @@ either market -- \cryptoOrderTested{} cryptocurrency pairs and \hoseTested{}
 equities -- is both a plausible power law and infinite-mean.
 \item Cross-sectionally the index rises, not falls, with illiquidity, in both
 markets.
+\item The framework's one surviving prediction -- that assets sharing a clock
+component trade and freeze together -- does hold in sign and survives the
+diurnal control, but the observed dependence is weaker than an $\alpha$-stable
+clock generates with no common shock at all.
 \end{arabiclist}
 
 We therefore find no empirical anchor for the inverse-stable-subordinator
@@ -1082,6 +1197,15 @@ presence of a common shock, because the diagonal atom is invisible to each
 marginal separately. Combined with Proposition~\ref{prop:beta} -- marginals are
 blind to the common shock -- this identifies the atom as the object worth
 estimating, and it is the part of this paper we expect to be reusable.
+
+Section~\ref{sec:jointstale} puts that to the test and returns a qualified
+answer. The dependence is present and survives the diurnal control, so the
+mechanism is not refuted. But it is weaker than the $\alpha$-stable clock
+delivers with no common shock at all, which is the same verdict the tail
+analysis reaches by an entirely different route: the construction is not wrong
+about \emph{what} couples two stale assets, only about \emph{how violently} it
+does so. That is a statement about the clock's marginal law, and it is repaired
+by the same substitution as the tail problem.
 
 \emph{Does not survive.} Everything that uses $\alpha\in(0,1)$: the exact Beta
 mixing law, the self-similarity of Proposition~\ref{prop:selfsim}, the mixture
@@ -1193,12 +1317,19 @@ index is a property of the event definition and the diurnal cycle, and once the
 tail threshold is fitted properly no series is both a plausible power law and
 infinite-mean.
 
+We also tested the one prediction that does not rest on the tail index --
+that assets sharing a clock component trade together. It holds in sign, and
+survives stratifying out the diurnal cycle, but it is weaker in the data than
+the model produces with the common shock switched off entirely.
+
 The constructive reading is that staleness in modern electronic markets is a
 scale effect rather than a tail effect, and that a tempered stable clock with a
 common index and asset-specific tempering rates is the model the data describe.
-The dependence results of this paper transfer to that setting unchanged; the
-scaling results do not, and finding the governing equations for the tempered
-multivariate case is the problem we would work on next.
+The dependence results of this paper transfer to that setting unchanged, and
+the tempering rate is what would let the common-shock loading finally be
+estimated rather than merely bounded; the scaling results do not transfer, and
+finding the governing equations for the tempered multivariate case is the
+problem we would work on next.
 
 \appendix
 
@@ -1560,6 +1691,15 @@ of independent random variables with infinite mathematical expectations. In:
 {\it Selected Translations in Mathematical Statistics and Probability},
 Volume 1, 171--189. Providence, Rhode Island: American Mathematical Society.
 
+\bibitem[Epps(1979)]{epp79} T. W. Epps (1979) Comovements in stock prices in
+the very short run, {\it Journal of the American Statistical Association}
+{\bf 74} (366), 291--298,
+\url{https://doi.org/10.1080/01621459.1979.10482508}.
+
+\bibitem[Farmer \& Lillo(2004)]{far04} J. D. Farmer \& F. Lillo (2004) On the
+origin of power-law tails in price fluctuations, {\it Quantitative Finance}
+{\bf 4} (1), 7--11, \url{https://doi.org/10.1088/1469-7688/4/1/c01}.
+
 \bibitem[Engle \& Russell(1998)]{eng98} R. F. Engle \& J. R. Russell (1998)
 Autoregressive conditional duration: a new model for irregularly spaced
 transaction data, {\it Econometrica} {\bf 66} (5), 1127--1162,
@@ -1581,6 +1721,11 @@ inference about the tail of a distribution, {\it The Annals of Statistics}
 for a class of stochastic processes, {\it Transactions of the American
 Mathematical Society} {\bf 88} (2), 380--387,
 \url{https://doi.org/10.1090/S0002-9947-1958-0094863-X}.
+
+\bibitem[LeBaron(2001)]{leb01} B. LeBaron (2001) Stochastic volatility as a
+simple generator of apparent financial power laws and long memory, {\it
+Quantitative Finance} {\bf 1} (6), 621--631,
+\url{https://doi.org/10.1088/1469-7688/1/6/304}.
 
 \bibitem[Lo \& MacKinlay(1990)]{lo90} A. W. Lo \& A. C. MacKinlay (1990) An
 econometric analysis of nonsynchronous trading, {\it Journal of Econometrics}

@@ -17,7 +17,8 @@ src/nmf/durations.py    Hill, running-mean, burst aggregation, deseasonalizing, 
 data/fetch_binance.py   Binance spot aggTrades collector (order + fill level)
 data/fetch_hose.py      HOSE tick collector via vnstock
 experiments/exp01..06   theory experiments
-experiments/exp10,11    empirical experiments (crypto, HOSE)
+experiments/exp10,11    empirical experiments (crypto, HOSE durations)
+experiments/exp12,13    co-trading dependence, and its model benchmark
 experiments/make_tables.py, make_figures.py   results -> LaTeX / PDF
 results/                JSON + CSV outputs, one file per experiment
 paper/                  manuscript, generated macros and tables
@@ -54,6 +55,14 @@ the bound overstates the requirement by roughly a factor of four.
 threshold `k = frac * n`. That is exactly the channel through which fill bursts
 bias the tail index downward, so discarding them would hide the effect being
 measured.
+
+**Dependence statistics are stratified, and the null is simulated.** Co-trading
+odds ratios use Mantel-Haenszel stratification by time-of-day, because a shared
+diurnal cycle alone induces positive dependence. The same statistic is then
+computed inside the model, where the `a = 0` (independent-clock) row is the
+check: it comes out at 1.4-1.9 rather than 1, because a self-similar clock is
+bursty at every scale and no finite stratification removes that. Comparing the
+data against 1 rather than against that null would have been wrong.
 
 **Correlation standard errors are bootstrapped.** The conditional variances are
 heavy-tailed, so the usual `(1-r^2)/sqrt(n-3)` is invalid and inflates

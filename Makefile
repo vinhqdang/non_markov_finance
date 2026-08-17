@@ -31,6 +31,8 @@ theory:
 empirics:
 	$(RUN) exp10_crypto_durations.py
 	$(RUN) exp11_hose_durations.py
+	$(RUN) exp12_joint_staleness.py
+	$(RUN) exp13_loading_benchmark.py
 
 paper:
 	$(RUN) make_tables.py
