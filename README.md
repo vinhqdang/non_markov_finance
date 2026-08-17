@@ -113,12 +113,15 @@ definition available in that market.
   was supplied.
 - Affiliation line ("British University Vietnam, Ecopark Campus, Hung Yen,
   Vietnam") has not been confirmed by the author -- check it.
-- References: all 26 verified against Crossref / arXiv / zbMATH by
+- References: all 38 verified against Crossref / arXiv / zbMATH by
   `paper/verify_refs.py` (run it again after any bibliography edit; it exits
   non-zero on any mismatch). Seven errors were found and fixed this way:
   four wrong DOIs pointing at unrelated papers (Barndorff-Nielsen et al.,
   Lamperti, Luciano & Semeraro, Sun et al.), one wrong year
   (Meerschaert & Sikorskii 2011, not 2012), one incomplete title
   (Ascione et al., "space-time coupled"), and one wrong initial
-  (A. Mutti, not G.).
+  (A. Mutti, not G.). A later pass replaced the Ascione et al. preprint with the
+  published version (Stochastic Processes and their Applications 201, 2026) and
+  added eight 2022-2026 references; the bibliography is now 11 items from 2022
+  onwards against 38 total.
 - Confirm the IJTAF APC waiver policy.

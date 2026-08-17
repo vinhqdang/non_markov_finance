@@ -96,8 +96,11 @@ volatility and replaces Brownian drivers by processes with memory
 \citep{gat18}. The second is motivated by market microstructure: trades arrive
 at irregular, non-exponentially spaced times, and between trades a recorded
 price does not move at all, so observed prices are \emph{stale}
-\citep{lo90,ban17}. The mechanism that produces staleness is a random, singular
-time change.
+\citep{lo90,ban17}. Staleness has since been given an explicit factor structure
+for the purpose of volatility estimation \citep{kon26}. The mechanism that
+produces staleness is a random, singular time change, and it is that mechanism
+-- rather than its consequences for a particular estimator -- that this paper is
+about.
 
 This paper belongs to the second program and has two halves. The first develops
 the multivariate theory the literature has explicitly asked for. The second
@@ -127,7 +130,12 @@ $H(t)$ is the timestamp of the last trade before $t$, and $Y(H(t))$ is the
 recorded price -- frozen between trades, updated at trades. The staleness is
 $t-H(t)$. Processes time-changed this way are not Markov and their laws solve
 nonlocal equations \citep{mee04,toa15,mee12}; this is the continuous-time random
-walk limit that \citet{sca00} and \citet{mai00} brought into finance.
+walk limit that \citet{sca00} and \citet{mai00} brought into finance. The
+analytic side of that programme is currently active: the regularity and
+asymptotics of inverse-subordinator densities are now understood in
+considerable generality \citep{asc24b}, the class of processes admitting such
+nonlocal descriptions has been widened \citep{fac25}, and exact sampling
+schemes for inverse subordinators have appeared \citep{bio26}.
 
 \subsection{The gap this paper addresses}
 
@@ -281,8 +289,9 @@ $S_j$ is itself stable exactly when $\alpha_j=\alpha_c$ or $a_j=0$. The
 components are dependent through $Z$ alone: their jumps coincide precisely at
 the jump times of $Z$, where $\Delta S_j = a_j\Delta Z$. This is the
 multivariate-subordinator construction of \citet{bar01} specialized to the
-factor structure of \citet{sem08} and \citet{luc10}, and it is the inverse-clock
-counterpart of the additive subordination of \citet{don25}.
+factor structure of \citet{sem08} and \citet{luc10} and developed further by
+\citet{sem22} and \citet{ami25a}, and it is the inverse-clock counterpart of the
+additive subordination of \citet{don25}.
 
 \subsection{Observed prices}
 
@@ -403,7 +412,9 @@ Definition~\ref{def:clock}, for every $t>0$ and \emph{every} $a_j\ge0$.
 \end{proposition}
 
 The first statement is the Dynkin--Lamperti generalized arcsine law
-\citep{lam58,dyn61}; see \citet[Sec.~3]{ber99} for the subordinator form. It is
+\citep{lam58,dyn61}; see \citet[Sec.~3]{ber99} for the subordinator form and
+\citet{asc24b} for what is known about inverse-subordinator densities in
+general. It is
 not a contribution of this paper. The second is immediate: under
 Assumption~\ref{ass:equal} the sum $X_j+a_jZ$ of independent $\alpha$-stable
 subordinators is again $\alpha$-stable, with exponent
@@ -911,7 +922,10 @@ tie.
 
 The two markets are deliberately opposite: a continuously traded
 twenty-four-hour venue with millisecond stamps, and a session-based equity
-market with second stamps. Estimation procedures -- the Hill estimator
+market with second stamps. Our object also differs from that of \citet{kon26},
+who treat staleness as a factor to be estimated and corrected for when measuring
+volatility; here staleness is the object itself, and the question is whether the
+clock that is supposed to generate it has the tail the theory needs. Estimation procedures -- the Hill estimator
 \citep{hil75} with a Hill-plot plateau rule, an assumption-free running-mean
 diagnostic, burst aggregation, diurnal adjustment, and the
 Clauset--Shalizi--Newman goodness-of-fit test \citep{cla09} -- are in
@@ -1222,7 +1236,18 @@ span \hoseGapLo{} to \hoseGapHi{} seconds while indices stay in a band around
 the duration distribution and leaves its \emph{tail} alone.
 
 The clock family that reproduces this is the tempered stable subordinator
-\citep{ros07}. Replace each $X_j$ by a subordinator with L\'evy measure
+\citep{ros07,tor24}. This is not a speculative suggestion: the
+\emph{direct}-subordination version of exactly this construction is already
+built and calibrated for financial models. \citet{sem22} develops multivariate
+tempered stable subordinators with a common-shock factor structure, and
+\citet{ami25a} and \citet{ami25b} extend and calibrate multivariate additive
+subordination on option data. What is missing is the inverse clock -- the
+staleness side -- which is the object this paper has analyzed in the stable
+case. The repair therefore inherits an existing, tested parameterization rather
+than requiring a new one, and the open problem is the governing equation, not
+the process.
+
+Replace each $X_j$ by a subordinator with L\'evy measure
 \begin{equation}
 \Pi_j(dz) = \frac{\alpha}{\Gamma(1-\alpha)}\,z^{-1-\alpha}\,e^{-\theta_j z}\,dz,
 \qquad \theta_j>0,
@@ -1259,10 +1284,14 @@ depends on $t$, and the local equation survives only in the short-horizon
 regime.
 
 \begin{question}\label{q:tempered}
-For a multivariate tempered stable clock $S_j=X_j+a_jZ$ with common index
-$\alpha$ and asset-specific tempering rates $\theta_j$, what governing equation
-does the law of $(Y_1(H_1(t)),\dots,Y_k(H_k(t)))$ satisfy, and does the
-crossover at $t\sim1/\theta_j$ admit a uniform description?
+For a multivariate tempered stable clock $S_j=X_j+a_jZ$ -- in the sense of
+\citet{sem22}, but entered through its inverse -- with common index $\alpha$ and
+asset-specific tempering rates $\theta_j$, what governing equation does the law
+of $(Y_1(H_1(t)),\dots,Y_k(H_k(t)))$ satisfy; does the crossover at
+$t\sim1/\theta_j$ admit a uniform description; and is the common-shock loading
+$a_j$ identified from the co-trading dependence of
+Section~\ref{sec:jointstale} once the tempering rate controls the baseline
+burstiness?
 \end{question}
 
 \subsection{Implications for the non-Markovian factor program}
@@ -1279,9 +1308,11 @@ Second, staleness itself is not in question. Prices do freeze between trades and
 excess idle time is a real, measurable feature of equity data \citep{ban17}.
 What is in question is the specific mechanism of an $\alpha$-stable trading
 clock with $\alpha<1$. Non-exponential durations with finite mean -- Weibull,
-log-normal, tempered stable, or the self-exciting arrival models of
-\citet{bac13} and \citet{eng98} -- are compatible with everything we observe and
-produce staleness without infinite mean.
+log-normal, tempered stable \citep{sem22,tor26}, or the self-exciting arrival
+models of \citet{bac13} and \citet{eng98} -- are compatible with everything we
+observe and produce staleness without infinite mean. Empirical work that takes
+staleness seriously without committing to an infinite-mean clock
+\citep{kon26} is unaffected by our result.
 
 Third, the multivariate structure is where the mathematical interest remains.
 The simultaneity atom is invisible to any single asset's duration distribution
@@ -1504,6 +1535,16 @@ and $\Delta$ cancels, giving \eqref{eq:rhoflat} for every $\Delta>0$. \qed
 
 \subsection*{Exact simulation of the clock vector}
 
+Sampling inverse subordinators exactly is a problem in its own right, and
+schemes for it have recently been developed \citep{bio26}. The requirement here
+is narrower and more specific: we need the \emph{joint} law of several
+undershoots driven by a shared jump component, and above all we need to decide
+the event that two clocks cross a level at the same instant. That event is
+about the jumps themselves, not about the marginal law of any one inverse, so we
+enumerate the underlying jumps directly and read every quantity off the
+resulting step path. Readers who need only a single inverse subordinator should
+use the dedicated samplers instead.
+
 Every simulation in this paper enumerates jumps rather than discretizing time.
 For a subordinator with L\'evy measure $\Pi$, the jumps on the operational
 interval $[0,U]$ are $\{(V_i,\bar\Pi^{-1}(\Gamma_i/U))\}_{i\ge1}$ with
@@ -1651,9 +1692,25 @@ event definition available in that market.
 
 \begin{thebibliography}{99}
 
-\bibitem[Ascione {\it et al.}(2024)]{asc24} G. Ascione, E. Scalas, B. Toaldo \&
-L. Torricelli (2024) Time-changed Markov processes and space-time coupled
-non-local equations. arXiv:2412.14956.
+\bibitem[Amici {\it et al.}(2025a)]{ami25a} G. Amici, L. Ballotta \&
+P. Semeraro (2025a) Multivariate additive subordination with applications in
+finance, {\it European Journal of Operational Research} {\bf 321} (3),
+1004--1020, \url{https://doi.org/10.1016/j.ejor.2024.10.010}.
+
+\bibitem[Amici {\it et al.}(2025b)]{ami25b} G. Amici, P. Brandimarte,
+F. Messeri \& P. Semeraro (2025b) Multivariate Lévy models: calibration and
+pricing, {\it OR Spectrum} {\bf 47} (4), 1379--1420,
+\url{https://doi.org/10.1007/s00291-025-00815-0}.
+
+\bibitem[Ascione {\it et al.}(2024)]{asc24b} G. Ascione, M. Savov \& B. Toaldo
+(2024) Regularity and asymptotics of densities of inverse subordinators, {\it
+Transactions of the London Mathematical Society} {\bf 11} (1), e70004,
+\url{https://doi.org/10.1112/tlm3.70004}.
+
+\bibitem[Ascione {\it et al.}(2026)]{asc24} G. Ascione, E. Scalas, B. Toaldo \&
+L. Torricelli (2026) Time-changed Markov processes and space-time coupled
+non-local equations, {\it Stochastic Processes and their Applications}
+{\bf 201}, 105057, \url{https://doi.org/10.1016/j.spa.2026.105057}.
 
 \bibitem[Bacry {\it et al.}(2013)]{bac13} E. Bacry, S. Delattre, M. Hoffmann \&
 J.-F. Muzy (2013) Modelling microstructure noise with mutually exciting point
@@ -1673,6 +1730,11 @@ and stability, {\it Advances in Applied Probability} {\bf 33} (1), 160--187,
 applications. In: {\it Lectures on Probability Theory and Statistics
 (Saint-Flour XXVII)}, Lecture Notes in Mathematics 1717, 1--91. Berlin:
 Springer, \url{https://doi.org/10.1007/978-3-540-48115-7_1}.
+
+\bibitem[Biočić {\it et al.}(2026)]{bio26} I. Biočić, D. E. Cedeño-Girón \&
+B. Toaldo (2026) Sampling inverse subordinators and subdiffusions, {\it The
+Annals of Applied Probability} {\bf 36} (1), 1--41,
+\url{https://doi.org/10.1214/25-aap2250}.
 
 \bibitem[Clark(1973)]{cla73} P. K. Clark (1973) A subordinated stochastic
 process model with finite variance for speculative prices, {\it Econometrica}
@@ -1696,6 +1758,11 @@ the very short run, {\it Journal of the American Statistical Association}
 {\bf 74} (366), 291--298,
 \url{https://doi.org/10.1080/01621459.1979.10482508}.
 
+\bibitem[Facciaroni {\it et al.}(2025)]{fac25} L. Facciaroni, C. Ricciuti,
+E. Scalas \& B. Toaldo (2025) Para-Markov chains and related non-local
+equations, {\it Fractional Calculus and Applied Analysis} {\bf 28} (3),
+1071--1093, \url{https://doi.org/10.1007/s13540-025-00390-9}.
+
 \bibitem[Farmer \& Lillo(2004)]{far04} J. D. Farmer \& F. Lillo (2004) On the
 origin of power-law tails in price fluctuations, {\it Quantitative Finance}
 {\bf 4} (1), 7--11, \url{https://doi.org/10.1088/1469-7688/4/1/c01}.
@@ -1716,6 +1783,11 @@ M. Rosenbaum (2018) Volatility is rough, {\it Quantitative Finance} {\bf 18}
 \bibitem[Hill(1975)]{hil75} B. M. Hill (1975) A simple general approach to
 inference about the tail of a distribution, {\it The Annals of Statistics}
 {\bf 3} (5), 1163--1174, \url{https://doi.org/10.1214/aos/1176343247}.
+
+\bibitem[Kong {\it et al.}(2026)]{kon26} X. Kong, B. Wu \& W. Ye (2026)
+Staleness factors and volatility estimation at high frequencies, {\it Journal of
+the American Statistical Association}, in press,
+\url{https://doi.org/10.1080/01621459.2026.2634436}.
 
 \bibitem[Lamperti(1958)]{lam58} J. Lamperti (1958) An occupation time theorem
 for a class of stochastic processes, {\it Transactions of the American
@@ -1769,6 +1841,11 @@ F. Mainardi (2000) Fractional calculus and continuous-time finance, {\it
 Physica A} {\bf 284} (1--4), 376--384,
 \url{https://doi.org/10.1016/S0378-4371(00)00255-7}.
 
+\bibitem[Semeraro(2022)]{sem22} P. Semeraro (2022) Multivariate tempered
+stable additive subordination for financial models, {\it Mathematics and
+Financial Economics} {\bf 16} (4), 685--712,
+\url{https://doi.org/10.1007/s11579-022-00321-9}.
+
 \bibitem[Semeraro(2008)]{sem08} P. Semeraro (2008) A multivariate variance
 gamma model for financial applications, {\it International Journal of
 Theoretical and Applied Finance} {\bf 11} (1), 1--18,
@@ -1784,6 +1861,15 @@ Probability} {\bf 49} (2), 481--514,
 hitting-times of subordinators and time-changed $C_0$-semigroups, {\it
 Potential Analysis} {\bf 42} (1), 115--140,
 \url{https://doi.org/10.1007/s11118-014-9426-5}.
+
+\bibitem[Torricelli(2024)]{tor24} L. Torricelli (2024) On the convolution
+equivalence of tempered stable distributions on the real line, {\it Statistics
+\& Probability Letters} {\bf 207}, 110034,
+\url{https://doi.org/10.1016/j.spl.2024.110034}.
+
+\bibitem[Torricelli(2026)]{tor26} L. Torricelli (2026) Thorin processes and
+their subordination, {\it Scandinavian Actuarial Journal} {\bf 2026} (1),
+21--59, \url{https://doi.org/10.1080/03461238.2025.2501062}.
 
 \end{thebibliography}
 
