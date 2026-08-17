@@ -1413,6 +1413,21 @@ series length grows. Right panel: three nearly horizontal curves of atom
 probability against horizon on a logarithmic axis.}
 \end{figure}
 
+\begin{remark}[range of $\alpha$ covered]
+The number of series terms needed for a given accuracy grows like
+$N \sim \varepsilon^{-\alpha/(1-\alpha)}$, so the exact simulator becomes
+expensive as $\alpha\uparrow1$: at $\alpha=0.7$ and the horizons used here the
+conservative bound already calls for order $10^{9}$ terms. The simulation
+evidence in this paper is therefore confined to $\alpha\in\{0.3,0.4,0.5\}$ for
+the joint-law tests and to $\alpha=1/2$ for the atom, potential density and
+evolution equation, where the closed form of Theorem~\ref{thm:potential} is also
+available. The correlation sweep reaches $\alpha=0.65$ because it uses the
+tabulated increment transform rather than fresh paths. All of the propositions
+are proved for general $\alpha\in(0,1)$; what is restricted is the numerical
+corroboration, and the restriction is one of computational cost rather than of
+validity.
+\end{remark}
+
 \begin{remark}[a residual finite-$N$ effect]
 At the smallest index studied, $\alpha=0.3$, the atom estimate drifts mildly
 upward across horizons at $N=\simJumps$. Repeating the comparison at
