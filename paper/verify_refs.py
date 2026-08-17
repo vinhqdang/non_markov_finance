@@ -20,7 +20,7 @@ from pathlib import Path
 
 import requests
 
-MAILTO = "vinh.dang@buv.edu.vn"          # Crossref asks for a contact address
+MAILTO = "vinh.dq4@buv.edu.vn"          # Crossref asks for a contact address
 
 # Entries that predate DOIs, or whose publisher deposits none, are verified
 # against zbMATH Open instead so that every reference has an authority.

@@ -107,8 +107,12 @@ definition available in that market.
 
 ## Before submission
 
-- ORCID inserted: 0000-0002-3877-8024 (checksum valid). Confirm against the
-  ORCID record itself before submission.
+- Author identifiers supplied by the author: email vinh.dq4@buv.edu.vn, ORCID
+  0000-0002-3877-8024 (checksum valid). The ORCID still deserves a look against
+  the record itself, since the same string appeared in an early draft before it
+  was supplied.
+- Affiliation line ("British University Vietnam, Ecopark Campus, Hung Yen,
+  Vietnam") has not been confirmed by the author -- check it.
 - References: all 26 verified against Crossref / arXiv / zbMATH by
   `paper/verify_refs.py` (run it again after any bibliography edit; it exits
   non-zero on any mismatch). Seven errors were found and fixed this way:
