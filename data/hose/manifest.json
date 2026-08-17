@@ -1,0 +1,262 @@
+{
+ "collected_local": "2026-08-17T12:36:14.666915",
+ "source": "vnstock/kbs",
+ "symbols": [
+  {
+   "symbol": "SSI",
+   "n_ticks": 2840,
+   "session_start": "2026-08-17 09:15:10",
+   "session_end": "2026-08-17 11:29:53",
+   "zero_gap_share": 0.20007044734061288,
+   "median_gap_s": 2.0
+  },
+  {
+   "symbol": "VPB",
+   "n_ticks": 978,
+   "session_start": "2026-08-17 09:15:10",
+   "session_end": "2026-08-17 11:29:44",
+   "zero_gap_share": 0.06960081883316274,
+   "median_gap_s": 6.0
+  },
+  {
+   "symbol": "HPG",
+   "n_ticks": 2009,
+   "session_start": "2026-08-17 09:15:09",
+   "session_end": "2026-08-17 11:29:56",
+   "zero_gap_share": 0.12350597609561753,
+   "median_gap_s": 3.0
+  },
+  {
+   "symbol": "STB",
+   "n_ticks": 658,
+   "session_start": "2026-08-17 09:15:10",
+   "session_end": "2026-08-17 11:29:31",
+   "zero_gap_share": 0.1187214611872146,
+   "median_gap_s": 8.0
+  },
+  {
+   "symbol": "MBB",
+   "n_ticks": 1323,
+   "session_start": "2026-08-17 09:15:09",
+   "session_end": "2026-08-17 11:29:40",
+   "zero_gap_share": 0.07564296520423601,
+   "median_gap_s": 5.0
+  },
+  {
+   "symbol": "SHB",
+   "n_ticks": 2448,
+   "session_start": "2026-08-17 09:15:10",
+   "session_end": "2026-08-17 11:29:48",
+   "zero_gap_share": 0.12014711892112791,
+   "median_gap_s": 1.0
+  },
+  {
+   "symbol": "VIX",
+   "n_ticks": 2112,
+   "session_start": "2026-08-17 09:15:10",
+   "session_end": "2026-08-17 11:29:46",
+   "zero_gap_share": 0.12126954050213169,
+   "median_gap_s": 3.0
+  },
+  {
+   "symbol": "TCB",
+   "n_ticks": 2071,
+   "session_start": "2026-08-17 09:15:10",
+   "session_end": "2026-08-17 11:29:57",
+   "zero_gap_share": 0.09227053140096618,
+   "median_gap_s": 3.0
+  },
+  {
+   "symbol": "CTG",
+   "n_ticks": 811,
+   "session_start": "2026-08-17 09:15:08",
+   "session_end": "2026-08-17 11:29:46",
+   "zero_gap_share": 0.05185185185185185,
+   "median_gap_s": 7.0
+  },
+  {
+   "symbol": "VND",
+   "n_ticks": 897,
+   "session_start": "2026-08-17 09:15:10",
+   "session_end": "2026-08-17 11:29:43",
+   "zero_gap_share": 0.05915178571428571,
+   "median_gap_s": 7.0
+  },
+  {
+   "symbol": "VCB",
+   "n_ticks": 956,
+   "session_start": "2026-08-17 09:15:10",
+   "session_end": "2026-08-17 11:29:43",
+   "zero_gap_share": 0.07329842931937172,
+   "median_gap_s": 6.0
+  },
+  {
+   "symbol": "VNM",
+   "n_ticks": 1294,
+   "session_start": "2026-08-17 09:15:10",
+   "session_end": "2026-08-17 11:29:40",
+   "zero_gap_share": 0.10904872389791183,
+   "median_gap_s": 4.0
+  },
+  {
+   "symbol": "FPT",
+   "n_ticks": 1459,
+   "session_start": "2026-08-17 09:15:09",
+   "session_end": "2026-08-17 11:29:42",
+   "zero_gap_share": 0.09259259259259259,
+   "median_gap_s": 4.0
+  },
+  {
+   "symbol": "MWG",
+   "n_ticks": 512,
+   "session_start": "2026-08-17 09:15:10",
+   "session_end": "2026-08-17 11:29:55",
+   "zero_gap_share": 0.08023483365949119,
+   "median_gap_s": 12.0
+  },
+  {
+   "symbol": "GEX",
+   "n_ticks": 1236,
+   "session_start": "2026-08-17 09:15:09",
+   "session_end": "2026-08-17 11:29:57",
+   "zero_gap_share": 0.10121457489878542,
+   "median_gap_s": 4.0
+  },
+  {
+   "symbol": "DIG",
+   "n_ticks": 535,
+   "session_start": "2026-08-17 09:15:08",
+   "session_end": "2026-08-17 11:29:16",
+   "zero_gap_share": 0.0449438202247191,
+   "median_gap_s": 8.5
+  },
+  {
+   "symbol": "DXG",
+   "n_ticks": 1120,
+   "session_start": "2026-08-17 09:15:08",
+   "session_end": "2026-08-17 11:29:51",
+   "zero_gap_share": 0.11885612153708669,
+   "median_gap_s": 4.0
+  },
+  {
+   "symbol": "POW",
+   "n_ticks": 372,
+   "session_start": "2026-08-17 09:15:10",
+   "session_end": "2026-08-17 11:29:57",
+   "zero_gap_share": 0.05121293800539083,
+   "median_gap_s": 14.0
+  },
+  {
+   "symbol": "HSG",
+   "n_ticks": 225,
+   "session_start": "2026-08-17 09:15:09",
+   "session_end": "2026-08-17 11:28:52",
+   "zero_gap_share": 0.004464285714285714,
+   "median_gap_s": 21.0
+  },
+  {
+   "symbol": "NLG",
+   "n_ticks": 398,
+   "session_start": "2026-08-17 09:15:10",
+   "session_end": "2026-08-17 11:29:13",
+   "zero_gap_share": 0.055415617128463476,
+   "median_gap_s": 11.0
+  },
+  {
+   "symbol": "PVD",
+   "n_ticks": 328,
+   "session_start": "2026-08-17 09:15:10",
+   "session_end": "2026-08-17 11:29:58",
+   "zero_gap_share": 0.06422018348623854,
+   "median_gap_s": 17.5
+  },
+  {
+   "symbol": "KDH",
+   "n_ticks": 398,
+   "session_start": "2026-08-17 09:15:09",
+   "session_end": "2026-08-17 11:29:56",
+   "zero_gap_share": 0.04785894206549118,
+   "median_gap_s": 10.0
+  },
+  {
+   "symbol": "REE",
+   "n_ticks": 151,
+   "session_start": "2026-08-17 09:15:10",
+   "session_end": "2026-08-17 11:29:34",
+   "zero_gap_share": 0.02,
+   "median_gap_s": 44.0
+  },
+  {
+   "symbol": "TCH",
+   "n_ticks": 435,
+   "session_start": "2026-08-17 09:15:10",
+   "session_end": "2026-08-17 11:29:38",
+   "zero_gap_share": 0.03686635944700461,
+   "median_gap_s": 13.5
+  },
+  {
+   "symbol": "HHV",
+   "n_ticks": 223,
+   "session_start": "2026-08-17 09:15:09",
+   "session_end": "2026-08-17 11:29:28",
+   "zero_gap_share": 0.05405405405405406,
+   "median_gap_s": 22.0
+  },
+  {
+   "symbol": "LCG",
+   "n_ticks": 101,
+   "session_start": "2026-08-17 09:15:09",
+   "session_end": "2026-08-17 11:28:59",
+   "zero_gap_share": 0.06,
+   "median_gap_s": 41.0
+  },
+  {
+   "symbol": "HAG",
+   "n_ticks": 112,
+   "session_start": "2026-08-17 09:15:09",
+   "session_end": "2026-08-17 11:27:13",
+   "zero_gap_share": 0.02702702702702703,
+   "median_gap_s": 45.5
+  },
+  {
+   "symbol": "SBT",
+   "n_ticks": 231,
+   "session_start": "2026-08-17 09:15:10",
+   "session_end": "2026-08-17 11:26:18",
+   "zero_gap_share": 0.017391304347826087,
+   "median_gap_s": 12.0
+  },
+  {
+   "symbol": "DCM",
+   "n_ticks": 298,
+   "session_start": "2026-08-17 09:15:08",
+   "session_end": "2026-08-17 11:29:50",
+   "zero_gap_share": 0.06060606060606061,
+   "median_gap_s": 22.0
+  },
+  {
+   "symbol": "GAS",
+   "n_ticks": 450,
+   "session_start": "2026-08-17 09:15:09",
+   "session_end": "2026-08-17 11:29:19",
+   "zero_gap_share": 0.12249443207126949,
+   "median_gap_s": 9.0
+  },
+  {
+   "symbol": "MSN",
+   "n_ticks": 1064,
+   "session_start": "2026-08-17 09:15:10",
+   "session_end": "2026-08-17 11:29:58",
+   "zero_gap_share": 0.09219190968955786,
+   "median_gap_s": 3.0
+  },
+  {
+   "symbol": "BID",
+   "n_ticks": 864,
+   "session_start": "2026-08-17 09:15:08",
+   "session_end": "2026-08-17 11:29:37",
+   "zero_gap_share": 0.09617612977983778,
+   "median_gap_s": 7.0
+  }
+ ]
+}

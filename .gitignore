@@ -216,3 +216,16 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# --- non_markov_finance ---
+.DS_Store
+# vendor-injected agent bootstrap dropped by vnstock on import; not ours
+AGENTS.md
+.agents/
+# LaTeX build artefacts (main.pdf is kept deliberately)
+paper/*.aux
+paper/*.fdb_latexmk
+paper/*.fls
+paper/*.log
+paper/*.out
+paper/build.log

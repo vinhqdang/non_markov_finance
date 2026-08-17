@@ -1,0 +1,154 @@
+{
+ "window_start_ms": 1786752000000,
+ "window_end_ms": 1786838400000,
+ "collected_utc": "2026-08-17T05:31:41.804790+00:00",
+ "symbols": [
+  {
+   "symbol": "BTCUSDT",
+   "qvol_24h": 469369948.7726923,
+   "n_agg": 185782,
+   "n_fills": 540313,
+   "span_s": 86399.29
+  },
+  {
+   "symbol": "ETHUSDT",
+   "qvol_24h": 200616691.372441,
+   "n_agg": 107773,
+   "n_fills": 409630,
+   "span_s": 86396.541
+  },
+  {
+   "symbol": "XPLUSDT",
+   "qvol_24h": 177849162.989242,
+   "n_agg": 237526,
+   "n_fills": 530334,
+   "span_s": 86398.545
+  },
+  {
+   "symbol": "ALLOUSDT",
+   "qvol_24h": 103539171.85106,
+   "n_agg": 175615,
+   "n_fills": 563350,
+   "span_s": 86398.497
+  },
+  {
+   "symbol": "SOLUSDT",
+   "qvol_24h": 62565618.89423,
+   "n_agg": 48470,
+   "n_fills": 139474,
+   "span_s": 86399.067
+  },
+  {
+   "symbol": "XRPUSDT",
+   "qvol_24h": 35249119.70249,
+   "n_agg": 29506,
+   "n_fills": 90922,
+   "span_s": 86393.964
+  },
+  {
+   "symbol": "HEMIUSDT",
+   "qvol_24h": 23990471.02393,
+   "n_agg": 118194,
+   "n_fills": 447552,
+   "span_s": 86399.869
+  },
+  {
+   "symbol": "LINKUSDT",
+   "qvol_24h": 12732842.70187,
+   "n_agg": 120989,
+   "n_fills": 392806,
+   "span_s": 86394.789
+  },
+  {
+   "symbol": "BICOUSDT",
+   "qvol_24h": 8441673.6709602,
+   "n_agg": 94198,
+   "n_fills": 186705,
+   "span_s": 86399.728
+  },
+  {
+   "symbol": "SPCXBUSDT",
+   "qvol_24h": 4934826.53162,
+   "n_agg": 18140,
+   "n_fills": 33179,
+   "span_s": 86390.1
+  },
+  {
+   "symbol": "TRUMPUSDT",
+   "qvol_24h": 3008633.93431,
+   "n_agg": 7033,
+   "n_fills": 19255,
+   "span_s": 86385.143
+  },
+  {
+   "symbol": "SYRUPUSDT",
+   "qvol_24h": 1754858.54371,
+   "n_agg": 6169,
+   "n_fills": 16290,
+   "span_s": 86376.738
+  },
+  {
+   "symbol": "RSRUSDT",
+   "qvol_24h": 235710.8389189,
+   "n_agg": 1945,
+   "n_fills": 2552,
+   "span_s": 86353.443
+  },
+  {
+   "symbol": "AMPUSDT",
+   "qvol_24h": 142844.081917,
+   "n_agg": 2136,
+   "n_fills": 2783,
+   "span_s": 86117.584
+  },
+  {
+   "symbol": "AUSDT",
+   "qvol_24h": 85769.52441,
+   "n_agg": 2450,
+   "n_fills": 4150,
+   "span_s": 86091.491
+  },
+  {
+   "symbol": "LQTYUSDT",
+   "qvol_24h": 51616.77673,
+   "n_agg": 1213,
+   "n_fills": 2151,
+   "span_s": 86025.575
+  },
+  {
+   "symbol": "XVSUSDT",
+   "qvol_24h": 30203.4005,
+   "n_agg": 3576,
+   "n_fills": 4275,
+   "span_s": 86372.002
+  },
+  {
+   "symbol": "PYPLBUSDT",
+   "qvol_24h": 18279.0223,
+   "n_agg": 628,
+   "n_fills": 700,
+   "span_s": 86244.621
+  },
+  {
+   "symbol": "SMHBUSDT",
+   "qvol_24h": 10982.42254,
+   "n_agg": 517,
+   "n_fills": 532,
+   "span_s": 85805.042
+  },
+  {
+   "symbol": "GSBUSDT",
+   "qvol_24h": 4097.808548,
+   "n_agg": 250,
+   "n_fills": 254,
+   "span_s": 84657.733
+  },
+  {
+   "symbol": "PLUMEUSDT",
+   "qvol_24h": 79828877.57685,
+   "n_agg": 170521,
+   "n_fills": 344841,
+   "span_s": 86394.771
+  }
+ ]
+}
