@@ -98,6 +98,7 @@ definition available in that market.
 
 ## Before submission
 
-- Insert the ORCID iD (marked in red in `paper/main.tex`).
+- ORCID inserted: 0000-0002-3877-8024 (checksum valid). Confirm against the
+  ORCID record itself before submission.
 - Verify every DOI in the bibliography against Crossref.
 - Confirm the IJTAF APC waiver policy.
