@@ -297,6 +297,21 @@ def do_crypto():
         mac(f"crypto{s.capitalize()}CsnMin", f"{sub.csn_alpha.min():.2f}")
     mac("cryptoSurvivorsTotal", str(sum(surv.values())))
 
+    # is it the liquid pairs that burst?
+    from scipy.stats import pearsonr
+    lv = np.log10(o["qvol_24h"].values)
+    pr = pearsonr(lv, o["fills_per_order"].values)
+    mac("cryptoBurstVolCorr", f"{pr[0]:+.3f}")
+    mac("cryptoBurstVolP", "<0.001" if pr[1] < 1e-3 else f"{pr[1]:.3f}")
+    zf = df[df.series == "fill"].set_index("symbol")["zero_share"]
+    zz = zf.reindex(o["symbol"]).values
+    pz = pearsonr(lv, zz)
+    mac("cryptoZeroVolCorr", f"{pz[0]:+.3f}")
+    mac("cryptoZeroVolP", "<0.001" if pz[1] < 1e-3 else f"{pz[1]:.3f}")
+    mac("cryptoZeroShareLo", f"{100 * np.nanmin(zz):.0f}")
+    mac("cryptoZeroShareHi", f"{100 * np.nanmax(zz):.0f}")
+    mac("cryptoZeroShareMed", f"{100 * np.nanmedian(zz):.0f}")
+
     ds = df[df.series == "deseas"]
     mac("cryptoDiurnalMed", f"{ds['diurnal_range'].median():.1f}")
     mac("cryptoDiurnalHi", f"{ds['diurnal_range'].max():.0f}")

@@ -911,10 +911,19 @@ property of the duration distribution and is invariant under coarsening of the
 event definition; a statistic that moves monotonically and without bound as the
 definition is coarsened is measuring the microstructure of order execution, not
 the tail of a trading-time distribution. The apparent infinite-mean waiting
-times in the raw data are an artifact of the finest event definition, and they
-are largest where markets are most active: fills per order range from
-\cryptoFillRatioLo{} to \cryptoFillRatioHi{} across the sample, and it is the
-liquid pairs that burst.
+times in the raw data are an artifact of the finest event definition.
+
+They are also largest where markets are most active, which is worth stating
+because it inverts the intuition that thin trading is what produces heavy
+duration tails. Fills per order range from \cryptoFillRatioLo{} to
+\cryptoFillRatioHi{} across the sample and rise steeply with turnover
+(correlation with log 24-hour volume $\cryptoBurstVolCorr$,
+$p\,\cryptoBurstVolP$); the share of fill-level durations that are exactly zero
+runs from \cryptoZeroShareLo{}\% to \cryptoZeroShareHi{}\% with median
+\cryptoZeroShareMed{}\%, and it too rises with volume
+($\cryptoZeroVolCorr$, $p\,\cryptoZeroVolP$). It is the liquid pairs that burst,
+and therefore the liquid pairs whose raw tail index is most badly
+under-estimated.
 
 \begin{figure}[t]
 \centerline{\includegraphics[width=3.3in]{fig_event_definition}}

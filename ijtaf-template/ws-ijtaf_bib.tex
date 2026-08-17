@@ -1,0 +1,69 @@
+\documentclass{ws-ijtaf}
+\usepackage{xcolor}
+\usepackage[verbose]{hyperref}
+\urlstyle{rm}
+
+\begin{document}
+
+\def\bib{B\kern-.05em{I}\kern-.025em{B}\kern-.08em}
+
+\title{\bib\TeX ing\\ in\\ WSPC \bib\/ Style}
+
+\markboth{WSPC}{Using World Scientific's \bib\TeX\/ Style File}
+
+\maketitle
+
+\section{Usage}
+
+\begin{verbatim}
+\documentclass{ws-ijtaf}
+\usepackage{url}
+\urlstyle{rm}
+\begin{document}
+\section{Output}
+Sample output using ws-ijtaf bibliography style file ...
+text \cite{best,pier,jame} ...
+\bibliographystyle{ws-ijtaf}
+\bibliography{sample}
+\end{document}
+\end{verbatim}
+
+\section{Output}
+Sample output using ws-ijtaf bibliography style file
+
+\begin{enumerate}[(14)]
+
+\item article: text \citep{best,jame,pier}
+
+\item proceedings: text \cite{Weiss94}
+
+\item inproceedings: text \citep{conftypical,Moss94}
+
+\item book: text \cite{ArmsRace1}
+
+\item edition: text \cite{ComplexVariables}
+
+\item editor: text \cite{ColBenh:93}
+
+\item series: text \cite{inbook}
+
+\item tech report: text \citep{hobby1992,CSTR116}
+
+\item unpublished: text \cite{VoQS}
+
+\item phd thesis: text \cite{Brown:1988:IEL}
+
+\item masters thesis: text \cite{segms}
+
+\item incollection: text \cite{Jones:Phoneme}
+
+\item booklet: text \citep[Theorem~1]{URW:kerning}
+
+\item misc: see Ref.~\citet{netpbm} for examples
+
+\end{enumerate}
+
+\bibliographystyle{ws-ijtaf}
+\bibliography{sample}
+
+\end{document} 
